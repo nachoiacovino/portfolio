@@ -46,7 +46,7 @@
                 <div class="navbar-nav ml-auto">
                     <a class="nav-item nav-link" href="https://www.linkedin.com/in/ignacio-iacovino/" target="_blank">LinkedIn</a>
                     <a class="nav-item nav-link" href="{% static 'IgnacioNicolasIacovinoResume.pdf'%}" target="_blank">Resume</a>
-                    <a class="nav-item nav-link" href="/blog">Blog</a>
+                    <a class="nav-item nav-link active" href="/blog">Blog</a>
                 </div>
             </div>
         </nav>
@@ -54,34 +54,23 @@
 
 <main role="main">
 
-  <section class="jumbotron text-center">
-    <div class="container">
-      <h1 class="jumbotron-heading">Hi! I'm Ignacio!</h1>
-      <p class="lead text-muted">Hey, my name is Ignacio but everyone calls me Nacho, my favorite language is Python and this website made with Django is a perfect example of it. Feel free to roam the website to see my work.</p>
-      <p>
-        <a href="mailto:nacho.iacovino@gmail.com" class="btn btn-primary my-2">Email Me</a>
-      </p>
-        <img src="{%static 'Ignacio-Iacovino.jpg'%}" width="40%"/>
-    </div>
-  </section>
-
-  <div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="row">
-        {% for job in jobs.all %}
-        <div class="col-md-4">
-          <div class="card mb-4 shadow-sm">
-            <img class="card-img-top" src="{{job.image.url}}" />
+  <div class="container">
+      <h1 class="text-center pt-3 pb-3">Welcome to my blog!</h1>
+      <h2>Latest posts</h2><hr />
+        {% for blog in blogs.all %}
+        <div class="card mb-4">
+            <img class=" img-fluid" src="{{blog.image.url}}" height=200 width=200/>
             <div class="card-body">
-              <p class="card-text">{{job.summary}}</p>
-              </div>
+                <h2 class="card-title">{{blog.title}}</h2>
+                <p class="card-text">{{blog.summary}}</p>
+                <a href="#" class="btn btn-primary">Read More &rarr;</a>
             </div>
-          </div>
+            <div class="card-footer text-muted">
+                Posted on {{blog.pub_date_pretty}} by
+                <a href="#">Ignacio Iacovino</a>
+            </div>    
         </div>
         {% endfor %}
-      </div>
-    </div>
   </div>
 
 </main>
